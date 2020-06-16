@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PLace</title>
+</head>
+<body>
+  <h1>Enter city name</h1>
+  <form th:action="@{/movies}" method="POST" class="form-signin">
+    <input type="text" id="city" name="city" th:placeholder="City" class="form-control" />
+    <button class="btn btn-lg btn-primary" name="Submit" value="Submit" th:text="Enter" type="Submit" style="margin-right:10px;"></button>
+</form>
+</body>
+</html>

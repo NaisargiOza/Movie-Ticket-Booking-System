@@ -22,6 +22,8 @@ public class UserServiceImp implements UserService {
 	RoleRepository roleRepository;
 	@Autowired
 	UserRepository userRepository;
+	//@Autowired
+	//User user;
 
 	@Override
 	public void saveUser(User user) {
@@ -41,5 +43,5 @@ public class UserServiceImp implements UserService {
 		 }
 		 return isUserAlreadyExists;
 	}
-
+    
 }
