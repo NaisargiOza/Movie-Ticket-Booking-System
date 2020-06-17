@@ -74,9 +74,9 @@ public class AuthenticationController {
 	   return modelAndView;	
 	}
 	/*
-	@RequestMapping(value = "/listth")
-	public ModelAndView listth() {
-	 
+	@RequestMapping(value = "/listth", method=RequestMethod.POST)
+	public ModelAndView listth(ModelAndView modelAndView) {
+	   
 	}*/
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {

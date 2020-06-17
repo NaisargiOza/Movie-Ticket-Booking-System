@@ -3,15 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
+<style>
+.button {
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 1100px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
-    <h1>List of theaters</h1>
-  <hr>
+   <form method="POST" th:action="@{/logout}">
+     <button class="button" type="submit">Logout</button>
+   </form>
+   <h1>List of theaters</h1>
   <table>
      <tr th:each="mname : ${m_name}">
        <td th:text="${mname}"></td>
      </tr>
    </table>
-    
-</body>
+   </body>
 </html>
