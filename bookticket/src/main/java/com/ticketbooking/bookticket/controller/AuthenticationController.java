@@ -66,22 +66,18 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/theatres", method = RequestMethod.GET)
-	public ModelAndView theatres() {
-	   ///m_name=m;
-	   ModelAndView modelAndView=new ModelAndView();
-	   modelAndView.addObject("m_name",m_name);
+	@RequestMapping(value = "/theatres", method = RequestMethod.POST)
+	public ModelAndView theatres(@RequestParam("m_name") String m,ModelAndView modelAndView) {
+	   m_name=m;
+	   modelAndView.addObject("m_name",theatreService.getTheatres(m_name, city));
 	   modelAndView.setViewName("theatres");
 	   return modelAndView;	
 	}
-	
-	@RequestMapping(value = "/listth", method = RequestMethod.POST)
-	public ModelAndView listth(@RequestParam("m_name") String m,ModelAndView modelAndView) {
-	   m_name=m;
-	   modelAndView.addObject("m_name",theatreService.getTheatres(m_name, city));
-	   modelAndView.setViewName("listth");
-	   return modelAndView;
-	}
+	/*
+	@RequestMapping(value = "/listth")
+	public ModelAndView listth() {
+	 
+	}*/
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
 		ModelAndView modelAndView = new ModelAndView();

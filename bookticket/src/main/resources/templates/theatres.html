@@ -5,14 +5,13 @@
 <title>Movie</title>
 </head>
 <body>
-  <h1>Select Movie</h1>
+    <h1>List of theaters</h1>
   <hr>
-  <h1>Enter movie name</h1>
-  <div class="form">
-  <form th:action="@{/listth}" method="POST">
-     <input type="text" id="m_name" name="m_name" th:placeholder="Movie" class="form-control"/>
-     <input type="submit" name="Submit" value="Submit" style="margin-right:10px;">
-   </form> 
-   </div>
+  <table>
+     <tr th:each="mname : ${m_name}">
+       <td th:text="${mname}"></td>
+     </tr>
+   </table>
+    
 </body>
 </html>
