@@ -29,7 +29,7 @@ public class AuthenticationController {
 	TheatreService theatreService;
 	
 	String city;
-	String mov;
+	String m_name;
 	String theatre_name;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
@@ -65,23 +65,23 @@ public class AuthenticationController {
 		modelAndView.setViewName("movies"); // resources/template/home.html
 		return modelAndView;
 	}
-	/*
-	@RequestMapping(value = "/movies", method = RequestMethod.POST)
-	public ModelAndView movies(@RequestParam("movies") String m,ModelAndView modelAndView) {
-		mov=m;
-		modelAndView.addObject("movies",mov);
-		modelAndView.setViewName("movies-views");
-		return modelAndView;	
-	}
-	/*
-	@RequestMapping(value = "/theatres", method = RequestMethod.POST)
-	public ModelAndView theatres(@RequestParam("theatre_name") String t,ModelAndView modelAndView ) {
-	   theatre_name=t;
-	   modelAndView.addObject("theatres",theatreService.getTheatres(movie, city));
+	
+	@RequestMapping(value = "/theatres", method = RequestMethod.GET)
+	public ModelAndView theatres() {
+	   ///m_name=m;
+	   ModelAndView modelAndView=new ModelAndView();
+	   //modelAndView.addObject("m_name",m_name);
 	   modelAndView.setViewName("theatres");
 	   return modelAndView;	
-	}*/
+	}
 	
+	@RequestMapping(value = "/listth", method = RequestMethod.POST)
+	public ModelAndView listth(@RequestParam("m_name") String m,ModelAndView modelAndView) {
+	   m_name=m;
+	   modelAndView.addObject("m_name",theatreService.getTheatres(m_name, city));
+	   modelAndView.setViewName("listth");
+	   return modelAndView;
+	}
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
 		ModelAndView modelAndView = new ModelAndView();
