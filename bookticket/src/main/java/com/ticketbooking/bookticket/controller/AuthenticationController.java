@@ -70,7 +70,7 @@ public class AuthenticationController {
 	public ModelAndView theatres() {
 	   ///m_name=m;
 	   ModelAndView modelAndView=new ModelAndView();
-	   //modelAndView.addObject("m_name",m_name);
+	   modelAndView.addObject("m_name",m_name);
 	   modelAndView.setViewName("theatres");
 	   return modelAndView;	
 	}

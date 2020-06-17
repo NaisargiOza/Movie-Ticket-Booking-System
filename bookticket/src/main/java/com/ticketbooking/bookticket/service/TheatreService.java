@@ -31,7 +31,14 @@ public class TheatreService {
 		List<String> names=new ArrayList<String>();
 		for(Theatre t:l)
 		{ if(t.getMovie_name().equals(m)==true)
-		   names.add(t.getTheatre_name());
+		  { String str="Theater name";
+		    str+=t.getTheatre_name();
+		    str+="    Seats Available:";
+		    str+=t.getAvailable();
+		    str+="    ";
+		    str+="Show timings:10:30-13:00";
+			names.add(str);
+		  }
 		}
 		return names;
 	}
