@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Movie</title>
+<title>Number</title>
 <style>
 .button {
   border: none;
@@ -15,10 +15,6 @@
   margin: 10px 1100px;
   cursor: pointer;
 }
- table.center {
-    margin-left:auto; 
-    margin-right:auto;
-  }
 </style>
 </head>
 <body>
@@ -26,19 +22,11 @@
      <button class="button" type="submit">Logout</button>
    </form>
    <div style="text-align:center;">
-   <h1>List of theaters</h1>
-   </div>
-  <table class="center">
-     <tr th:each="mname : ${m_name}">
-       <td th:text="${mname}"></td>
-     </tr>
-   </table>
-    <div style="text-align:center;">
-   <h1>Enter theater name</h1>
-  <form th:action="@{/outp}" method="POST" class="form-signin">
-    <input type="text" id="theater" name="theater" th:placeholder="Theater" class="form-control" />
+  <h1>Enter number of tickets you want to book</h1>
+  <form th:action="@{/seats}" method="POST" class="form-signin">
+    <input type="text" id="num" name="num" th:placeholder="Number" class="form-control" />
     <button class="btn btn-lg btn-primary" name="Submit" value="Submit" th:text="Enter" type="Submit" style="margin-right:10px;"></button>
 </form>
 </div>
-   </body>
+</body>
 </html>

@@ -3,12 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>PLace</title>
+<style>
+.button {
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 1100px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
+  <form method="POST" th:action="@{/logout}">
+     <button class="button" type="submit">Logout</button>
+   </form>
+   <div style="text-align:center;">
   <h1>Enter city name</h1>
   <form th:action="@{/movies}" method="POST" class="form-signin">
     <input type="text" id="city" name="city" th:placeholder="City" class="form-control" />
     <button class="btn btn-lg btn-primary" name="Submit" value="Submit" th:text="Enter" type="Submit" style="margin-right:10px;"></button>
 </form>
+</div>
 </body>
 </html>

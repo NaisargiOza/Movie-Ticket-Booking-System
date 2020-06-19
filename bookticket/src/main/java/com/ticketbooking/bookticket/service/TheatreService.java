@@ -36,7 +36,8 @@ public class TheatreService {
 		    str+="    Seats Available: ";
 		    str+=t.getAvailable();
 		    str+="    ";
-		    str+="Show timings: 10:30-13:00";
+		    str+="Show timings: ";
+		    str+=t.getShow_tim();
 			names.add(str);
 		  }
 		}

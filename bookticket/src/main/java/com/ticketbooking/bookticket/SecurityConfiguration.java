@@ -47,7 +47,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/place/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
 				.antMatchers("/movies/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
 				.antMatchers("/theatres/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
-				.antMatchers("/listth/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
+				.antMatchers("/seats/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
+				.antMatchers("/outp/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
 				.anyRequest().authenticated()
 				.and()
 				// form login

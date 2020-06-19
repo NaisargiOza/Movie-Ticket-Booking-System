@@ -10,12 +10,16 @@ import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ticketbooking.bookticket.model.Seat;
 import com.ticketbooking.bookticket.model.User;
+import com.ticketbooking.bookticket.service.SeatService;
 import com.ticketbooking.bookticket.service.TheatreService;
 import com.ticketbooking.bookticket.service.UserService;
 
@@ -28,9 +32,15 @@ public class AuthenticationController {
 	@Autowired 
 	TheatreService theatreService;
 	
+	@Autowired
+	SeatService seatService;
+	
 	String city;
 	String m_name;
 	String theatre_name;
+	int num;
+	List<Seat> ids;
+	Seat s;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
@@ -73,11 +83,21 @@ public class AuthenticationController {
 	   modelAndView.setViewName("theatres");
 	   return modelAndView;	
 	}
-	/*
-	@RequestMapping(value = "/listth", method=RequestMethod.POST)
-	public ModelAndView listth(ModelAndView modelAndView) {
-	   
-	}*/
+	
+	@RequestMapping(value="/seats",method=RequestMethod.POST)
+	public synchronized ModelAndView seats(@RequestParam("num") int n,ModelAndView modelAndView) {
+		num=n;
+		modelAndView.setViewName("seats");
+		return modelAndView;
+	}
+	@RequestMapping(value = "/outp", method = RequestMethod.POST)
+	public ModelAndView outp(@RequestParam("theater") String t,ModelAndView modelAndView) {
+	   theatre_name=t;
+	   modelAndView.addObject("num",num);
+	   modelAndView.setViewName("outp");
+	   return modelAndView;	
+	}
+	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
 		ModelAndView modelAndView = new ModelAndView();
