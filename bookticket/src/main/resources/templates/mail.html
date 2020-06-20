@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Notification</title>
+<style>
+.button {
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 1100px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<form method="POST" th:action="@{/logout}">
+     <button class="button" type="submit">Logout</button>
+   </form>
+   <div style="text-align:center;">
+     <h1>Enter Email Id where you would like to get ticket confirmation mail</h1>
+      <form th:action="@{/notif}" method="POST" class="form-signin">
+    <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" />
+    <button class="btn btn-lg btn-primary" name="Submit" value="Submit" th:text="Enter" type="Submit" style="margin-right:10px;"></button>
+</form>
+</div>
+</body>
+</html>

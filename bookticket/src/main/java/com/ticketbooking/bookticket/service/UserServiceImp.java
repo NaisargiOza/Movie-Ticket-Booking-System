@@ -44,4 +44,8 @@ public class UserServiceImp implements UserService {
 		 return isUserAlreadyExists;
 	}
     
+	@Override
+	public String getEmail(User user) {
+		return user.getEmail();
+	}
 }

@@ -8,6 +8,6 @@ public interface UserService {
 		
 	public boolean isUserAlreadyPresent(User user);
 	
-	//public String getCity();
+	public String getEmail(User user);
 	
 }

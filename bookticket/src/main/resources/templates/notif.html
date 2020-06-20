@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.ex1 {
+  margin-left: 950px;
+  font-size:18px
+}
+</style>
+</head>
+<body>
+<form style="text-align:center;">
+<h1>Thank you!</h1>
+</form>
+ <form th:action="@{/logout}">
+     <button class="button ex1" type="submit">Logout</button>
+</form>
+</body>
+</html>

@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.ticketbooking.bookticket.model.Seat;
 import com.ticketbooking.bookticket.model.User;
+import com.ticketbooking.bookticket.service.NotificationService;
 import com.ticketbooking.bookticket.service.SeatService;
 import com.ticketbooking.bookticket.service.TheatreService;
 import com.ticketbooking.bookticket.service.UserService;
@@ -26,6 +29,7 @@ import com.ticketbooking.bookticket.service.UserService;
 @Controller
 public class AuthenticationController {
     
+	private Logger logger=LoggerFactory.getLogger(AuthenticationController.class);
 	@Autowired
 	UserService userService;
 	
@@ -35,10 +39,14 @@ public class AuthenticationController {
 	@Autowired
 	SeatService seatService;
 	
+	@Autowired
+	NotificationService notificationService;
+	
 	String city;
 	String m_name;
 	String theatre_name;
 	int num;
+	String email;
 	List<Seat> ids;
 	Seat s;
 	
@@ -96,6 +104,27 @@ public class AuthenticationController {
 	   modelAndView.addObject("num",num);
 	   modelAndView.setViewName("outp");
 	   return modelAndView;	
+	}
+	
+	@RequestMapping(value = "/mail", method = RequestMethod.GET)
+	public ModelAndView mail() {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.addObject("email",email);
+		modelAndView.setViewName("mail");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/notif", method = RequestMethod.POST)
+	public ModelAndView notif(@RequestParam("email") String e,ModelAndView modelAndView) {
+		//ModelAndView modelAndView=new ModelAndView();
+		email=e;
+		try {
+			notificationService.sendNotification(email,num,m_name,theatre_name);
+		}catch(MailException g) {
+		  logger.info("Error sending mail: "+g.getMessage());	
+		}
+		modelAndView.setViewName("notif"); // resources/template/home.html
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
