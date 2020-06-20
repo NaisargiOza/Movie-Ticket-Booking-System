@@ -20,7 +20,7 @@ function reply_click(click_id) {
   var k={"id":click_id};
   xhttp.open("POST", "seats.html", true);
   xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send(k);
+  xhttp.send(JSON.stringify(k));
 }
 </script>
 </body>
