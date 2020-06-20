@@ -85,8 +85,8 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(value="/seats",method=RequestMethod.POST)
-	public synchronized ModelAndView seats(@RequestParam("num") int n,ModelAndView modelAndView) {
-		num=n;
+	public synchronized ModelAndView seats(@RequestParam("seat") Seat seat,ModelAndView modelAndView) {
+		s=seat;
 		modelAndView.setViewName("seats");
 		return modelAndView;
 	}
