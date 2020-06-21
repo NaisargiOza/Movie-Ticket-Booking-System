@@ -11,11 +11,9 @@ import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,7 +78,7 @@ public class AuthenticationController {
 		//ModelAndView modelAndView=new ModelAndView();
 		city=c;
 		modelAndView.addObject("movies",theatreService.getMovies(city));
-		modelAndView.setViewName("movies"); // resources/template/home.html
+		modelAndView.setViewName("movies");
 		return modelAndView;
 	}
 	
@@ -98,6 +96,7 @@ public class AuthenticationController {
 		modelAndView.setViewName("seats");
 		return modelAndView;
 	}
+	
 	@RequestMapping(value = "/outp", method = RequestMethod.POST)
 	public ModelAndView outp(@RequestParam("theater") String t,ModelAndView modelAndView) {
 	   theatre_name=t;
@@ -106,6 +105,22 @@ public class AuthenticationController {
 	   return modelAndView;	
 	}
 	
+	@RequestMapping(value = "/pay", method = RequestMethod.GET)
+	public ModelAndView payment(@RequestParam(value="t",required=false) String t,ModelAndView modelAndView) {
+		//ModelAndView modelAndView=new ModelAndView();
+		int p=num*120;
+		modelAndView.addObject("total",num);
+		modelAndView.addObject("price",p);
+		modelAndView.setViewName("pay");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/gate", method =  RequestMethod.GET)
+	public ModelAndView gateway() {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("gate");
+        return modelAndView;
+	}
 	@RequestMapping(value = "/mail", method = RequestMethod.GET)
 	public ModelAndView mail() {
 		ModelAndView modelAndView=new ModelAndView();

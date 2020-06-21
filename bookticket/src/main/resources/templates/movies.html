@@ -14,20 +14,28 @@
   font-size: 16px;
   margin: 10px 1100px;
   cursor: pointer;
+  position: absolute;
 }
- table.center {
+.cen {
+   margin: auto;
+  border-radius: 25px;
+  background:#D3D3D3;
+  padding: 20px; 
+  width: 500px;
+  height: 400px;  
+}
+table.center {
     margin-left:auto; 
     margin-right:auto;
-  }
+}
 </style>
 </head>
 <body>
     <form method="POST" th:action="@{/logout}">
      <button class="button" type="submit">Logout</button>
    </form>
-   <div style="text-align:center;">
+   <div class="cen" style="text-align:center;">
    <h1>List of movies screening in your area</h1>
-   </div>
    <table class="center">
      <tr th:each="movie : ${movies}">
        <td th:text="${movie}"></td>
@@ -37,9 +45,10 @@
   <h1>Enter movie name</h1>
   <div class="form">
   <form th:action="@{/theatres}" method="POST">
-     <input type="text" id="m_name" name="m_name" th:placeholder="Movie" class="form-control"/>
-     <input type="submit" name="Submit" value="Submit" style="margin-right:10px;">
+     <input type="text" id="m_name" name="m_name" th:placeholder="Movie" class="form-control" style="padding:4px 0px;"/>
+     <input type="submit" name="Submit" value="Submit" style="padding:4px 22px;">
    </form> 
+   </div>
    </div>
    </div>
 </body>

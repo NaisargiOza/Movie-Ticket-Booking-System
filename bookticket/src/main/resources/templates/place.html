@@ -15,17 +15,26 @@
   margin: 10px 1100px;
   cursor: pointer;
 }
+.cen {
+   margin: auto;
+  border-radius: 25px;
+  background:#D3D3D3;
+  padding: 20px; 
+  width: 450px;
+  height: 300px;  
+}
 </style>
 </head>
 <body>
   <form method="POST" th:action="@{/logout}">
      <button class="button" type="submit">Logout</button>
    </form>
-   <div style="text-align:center;">
+   <div class="cen" style="text-align:center;">
+   <br>
   <h1>Enter city name</h1>
   <form th:action="@{/movies}" method="POST" class="form-signin">
-    <input type="text" id="city" name="city" th:placeholder="City" class="form-control" />
-    <button class="btn btn-lg btn-primary" name="Submit" value="Submit" th:text="Enter" type="Submit" style="margin-right:10px;"></button>
+    <input type="text" id="city" name="city" th:placeholder="City" class="form-control" style="padding:4px 0px;"/>
+    <button class="btn btn-lg btn-primary" name="Submit" value="Submit" th:text="Enter" type="Submit" style="padding:4px 22px;"></button>
 </form>
 </div>
 </body>

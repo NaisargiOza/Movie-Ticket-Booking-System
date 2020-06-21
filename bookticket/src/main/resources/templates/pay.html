@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Payment</title>
+<meta charset="UTF-8">
+<style>
+.center {
+   margin: auto;
+  border-radius: 25px;
+  background:#D3D3D3;
+  padding: 20px; 
+  width: 400px;
+  height: 300px;  
+}
+.button {
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 1100px;
+  cursor: pointer;
+}
+.btn {
+  border: none;
+  background: #F5F5F5;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 250px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<form method="POST" action="@{/logout}">
+     <button class="button" type="submit">Logout</button>
+   </form>
+<div class="center" style="text-align:center;">
+<h2> Total Amount </h2>
+<p>Number of tickets selected:  [[${total}]]</p>
+<p>Total cost is: Rs.[[${price}]]</p>
+<br><br>
+<form th:action="@{/gate}">
+     <button class="btn" type="submit">Proceed to pay</button>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Payment UPI</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+</head>
+<style type="text/css"> 
+*{
+	margin: o;
+	padding: 0;
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+body{
+	margin: 0 10px;
+	background-color: background-color: #E8E8E8;
+}
+.Payment{
+	max-width: 360px;
+	margin: 50px auto;
+	height: auto;
+	padding: 35px;
+	padding-top: 50px;
+	border-radius: 5px;
+	position: relative; 	
+	background-color: #A9A9A9;
+}
+.Payment h2{
+	text-align: center;
+	margin-bottom: 30px;
+
+}
+.form .label{
+	display: block;
+	margin-bottom: 6px; 
+
+}
+.form .input{
+	text-align: center;
+	width: 100%;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 7px 0 7px 0;
+	font-size: 16px;
+}
+.group{
+	display: flex;
+	justify-content: space-between;
+	padding-top: 3px;
+}
+.item{
+	width: 48%;
+}
+.btn
+{
+	text-decoration: none;
+	position: relative;
+	border-radius: 5px;
+	background-color:dodgerblue;
+	color: white;
+	font-size: 16px;
+	text-align: center;
+	margin: 30px;
+        margin-left: 80px;
+	padding: 10px;
+        padding-left: 40px;
+        padding-right: 40px;
+	cursor: pointer; 
+}
+</style>
+<body>
+<div class="contain">
+ <div class="Payment">
+  <h2>Payment Gateway</h2>
+   <div class="form">
+    <div class="card ">
+	 <label class="label">Card holder name:</label>
+	  <input type="text" class="input" name="card_holder" placeholder="Card-holder">
+	</div>
+	<div class="card">
+	 <label class="label">Card number:</label>
+	  <input type="text" class="input" name="card_number" placeholder="Card-number" data-mask="0000 0000 0000 0000">
+	</div>
+	<div class="group">
+	 <div class="item">
+	  <label class="label">Expiry date:</label>
+		<input type="text" class="input" name="Expiry" placeholder="00/00" data-mask="00/00">
+	 </div>
+     <div class="item">
+     <label class="label">CVV:</label>
+	  <input type="password" class="input" name="CVV" placeholder="000" data-mask="000">
+	 </div>
+	</div>
+	<form th:action="@{/mail}">
+     <button class="btn" type="submit">Pay</button>
+   </form>
+   </div>
+  </div>
+ </div>
+</body>
+</html>
