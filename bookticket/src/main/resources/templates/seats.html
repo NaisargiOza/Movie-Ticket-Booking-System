@@ -2,20 +2,20 @@
 <html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-#multiselect .select {
+.multiselect_select {
     background:url('images/available_seat_img.jpg') center;
     display:inline-block;
     width:33px; height: 33px;
     margin-bottom:20px;
 }
-#multiselect .s {
+.multiselect_s {
     background:url('images/selected_seat_img.jpg') center;
     display:inline-block;
     width:33px; height: 33px;
     margin-bottom:20px;
      margin-left: 40px;
 }
-#multiselect .sel {
+.multiselect_sel {
     background:url('images/column-view-33.jpg') center;
     display:inline-block;
     width:33px; height: 33px;
@@ -35,99 +35,129 @@
 </style>
 </head>
 <body>
-<script>
-       var k=0;
-       $(document).ready(function() { 
-    	 $(".select").on("click", function () {
-    		 k=k+1;
-    		 if(k<=6)
-		     { $(this).css("background-image", "url('images/selected_seat_img.jpg')"); }
-		     else
-		     { alert("Maximum limit reached"); }
-	});
-      });
-</script>
     <div class="center"> 
     <h1>Select seats</h1>
-    <div id="multiselect">
-        <div class="select">1</div>
-        <div class="select">2</div>
-        <div class="select">3</div>
-        <div class="select">4</div>
-        <div class="sel">p</div>
-        <div class="select">5</div>
-        <div class="select">6</div>
-        <div class="select">7</div>
-        <div class="select">8</div>
+    <div>
+        <div id="1" class="multiselect_select">1</div>
+        <div id="2" class="multiselect_select">2</div>
+        <div id="3" class="multiselect_select">3</div>
+        <div class="multiselect_select">4</div>
+        <div class="multiselect_sel">p</div>
+        <div class="multiselect_select">5</div>
+        <div class="multiselect_select">6</div>
+        <div class="multiselect_select">7</div>
+        <div class="multiselect_select">8</div>
     </div>
-    <div id="multiselect">
-        <div class="select">9</div>
-        <div class="select">10</div>
-        <div class="select">11</div>
-        <div class="select">12</div>
-        <div class="sel">p</div>
-        <div class="select">13</div>
-        <div class="select">14</div>
-        <div class="select">15</div>
-        <div class="select">16</div>
+    <div>
+        <div class="multiselect_select">9</div>
+        <div class="multiselect_select">10</div>
+        <div class="multiselect_select">11</div>
+        <div class="multiselect_select">12</div>
+        <div class="multiselect_sel">p</div>
+        <div class="multiselect_select">13</div>
+        <div class="multiselect_select">14</div>
+        <div class="multiselect_select">15</div>
+        <div class="multiselect_select">16</div>
     </div>
-    <div id="multiselect">
-        <div class="select">17</div>
-        <div class="select">18</div>
-        <div class="select">19</div>
-        <div class="select">20</div>
-        <div class="sel">p</div>
-        <div class="select">21</div>
-        <div class="select">22</div>
-        <div class="select">23</div>
-        <div class="select">24</div>
+    <div>
+        <div class="multiselect_select">17</div>
+        <div class="multiselect_select">18</div>
+        <div class="multiselect_select">19</div>
+        <div class="multiselect_select">20</div>
+        <div class="multiselect_sel">p</div>
+        <div class="multiselect_select">21</div>
+        <div class="multiselect_select">22</div>
+        <div class="multiselect_select">23</div>
+        <div class="multiselect_select">24</div>
     </div>
-    <div id="multiselect">
-        <div class="select">25</div>
-        <div class="select">26</div>
-        <div class="select">27</div>
-        <div class="select">28</div>
-        <div class="sel">p</div>
-        <div class="select">29</div>
-        <div class="select">30</div>
-        <div class="select">31</div>
-        <div class="select">32</div>
+    <div>
+        <div class="multiselect_select">25</div>
+        <div class="multiselect_select">26</div>
+        <div class="multiselect_select">27</div>
+        <div class="multiselect_select">28</div>
+        <div class="multiselect_sel">p</div>
+        <div class="multiselect_select">29</div>
+        <div class="multiselect_select">30</div>
+        <div class="multiselect_select">31</div>
+        <div class="multiselect_select">32</div>
     </div>
-    <div id="multiselect">
-        <div class="select">33</div>
-        <div class="select">34</div>
-        <div class="select">35</div>
-        <div class="select">36</div>
-        <div class="sel">p</div>
-        <div class="select">37</div>
-        <div class="select">38</div>
-        <div class="select">39</div>
-        <div class="select">40</div>
+    <div>
+        <div class="multiselect_select">33</div>
+        <div class="multiselect_select">34</div>
+        <div class="multiselect_select">35</div>
+        <div class="multiselect_select">36</div>
+        <div class="multiselect_sel">p</div>
+        <div class="multiselect_select">37</div>
+        <div class="multiselect_select">38</div>
+        <div class="multiselect_select">39</div>
+        <div class="multiselect_select">40</div>
     </div>
-    <div id="multiselect">
-        <div class="select">41</div>
-        <div class="select">42</div>
-        <div class="select">43</div>
-        <div class="select">44</div>
-        <div class="sel">p</div>
-        <div class="select">45</div>
-        <div class="select">46</div>
-        <div class="select">47</div>
-        <div class="select">48</div>
+    <div>
+        <div class="multiselect_select">41</div>
+        <div class="multiselect_select">42</div>
+        <div class="multiselect_select">43</div>
+        <div class="multiselect_select">44</div>
+        <div class="multiselect_sel">p</div>
+        <div class="multiselect_select">45</div>
+        <div class="multiselect_select">46</div>
+        <div class="multiselect_select">47</div>
+        <div class="multiselect_select">48</div>
     </div>
   </div>
-  <div id="multiselect">
- <div class="select">
+  <div>
+ <div class="multiselect_select">
   <br>
   <p>Available seat</p>
  </div>
- <div class="s">
+ <div class="multiselect_s">
   <br>
   <p>Selected seat</p>
  </div> 
  </div>
- <form th:action="@{/pay}">
-     <button class="button ex1" type="submit">Continue</button>
+ <form>
+     <button class="ex1" type="submit" action="">Continue</button>
 </form>
+<script>
+var k=0;
+var l;
+$(document).ready(function() { 
+	 $(".multiselect_select").on("click", function (e) {
+		 e.preventDefault();
+		 k=k+1;
+		 if(k<=6)
+	     { $(this).css("background-image", "url('images/selected_seat_img.jpg')"); 
+	     l: {
+	    		 id=event.target.id,
+	    		 t_id="1",
+	    		 available=false
+	       }
+	     }
+	     else
+	     { alert("Maximum limit reached"); }
+  });
+});
+$(document).ready(function() {
+	 $(".ex1").on("click",function(e) {
+		 e.preventDefault();
+		     $.ajax({
+		    	 async: true, 
+			     type: "POST",
+			     contentType : "application/json",
+			     url: "/pay",
+			     data : JSON.stringify(l),
+			     dataType: "json",
+			     success: function(response) {
+			       console.log("success");
+			       alert("yay!");
+			     },
+			     error : function(e) {
+				   alert("Error!"+e);
+				   console.log("ERROR: ", e);
+			     }
+			  });
+		});
+
+});
+</script>
 </body>
 </html>

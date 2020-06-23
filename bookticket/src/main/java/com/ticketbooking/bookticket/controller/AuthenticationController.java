@@ -6,14 +6,20 @@ import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.mail.MailException;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +30,8 @@ import com.ticketbooking.bookticket.service.SeatService;
 import com.ticketbooking.bookticket.service.TheatreService;
 import com.ticketbooking.bookticket.service.UserService;
 
-@Controller
+@Secured(value = { "USER" })
+@RestController
 public class AuthenticationController {
     
 	private Logger logger=LoggerFactory.getLogger(AuthenticationController.class);
@@ -34,8 +41,7 @@ public class AuthenticationController {
 	@Autowired 
 	TheatreService theatreService;
 	
-	@Autowired
-	SeatService seatService;
+	
 	
 	@Autowired
 	NotificationService notificationService;
@@ -46,7 +52,7 @@ public class AuthenticationController {
 	int num;
 	String email;
 	List<Seat> ids;
-	Seat s;
+	
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
@@ -105,15 +111,6 @@ public class AuthenticationController {
 	   return modelAndView;	
 	}
 	
-	@RequestMapping(value = "/pay", method = RequestMethod.GET)
-	public ModelAndView payment(@RequestParam(value="t",required=false) String t,ModelAndView modelAndView) {
-		//ModelAndView modelAndView=new ModelAndView();
-		int p=num*120;
-		modelAndView.addObject("total",num);
-		modelAndView.addObject("price",p);
-		modelAndView.setViewName("pay");
-		return modelAndView;
-	}
 	
 	@RequestMapping(value = "/gate", method =  RequestMethod.GET)
 	public ModelAndView gateway() {

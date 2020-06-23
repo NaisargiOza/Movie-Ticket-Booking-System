@@ -20,4 +20,8 @@ public class SeatService {
 	    seatRepository.save(s);
 	  }
 	}
+	
+	public void setchange(Seat l)
+	{ l.setAvailable(false);
+	}
 }
