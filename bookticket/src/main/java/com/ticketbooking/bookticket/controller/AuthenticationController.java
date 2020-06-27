@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.ticketbooking.bookticket.model.Seat;
 import com.ticketbooking.bookticket.model.User;
 import com.ticketbooking.bookticket.service.NotificationService;
@@ -116,12 +115,15 @@ public class AuthenticationController {
 	   return modelAndView;	
 	}
 	
-	@RequestMapping(value = "/pay", method =  RequestMethod.GET)
-	public ModelAndView paymnt() {
-		ModelAndView modelAndView=new ModelAndView();
+	@RequestMapping(value = "/pay", method = RequestMethod.GET)
+	public ModelAndView payment(@RequestParam(value="t",required=false) String t,ModelAndView modelAndView) {
+		//ModelAndView modelAndView=new ModelAndView();
 		logger.info("in payment method");
+		int p=num*120;
+		modelAndView.addObject("total",num);
+		modelAndView.addObject("price",p);
 		modelAndView.setViewName("pay");
-        return modelAndView;
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/confirm", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

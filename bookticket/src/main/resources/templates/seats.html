@@ -114,8 +114,8 @@
   <p>Selected seat</p>
  </div> 
  </div>
- <form method="POST" action="@{/confirm}">
-     <button id="ex1" type="button">Continue</button>
+ <form method="POST" action="@{/confirm}" style="padding-left: 1000px;">
+     <button id="ex1" type="button" style="font-size: 18px;">Continue</button>
 </form>
 <script>
 var ids=[];
@@ -131,7 +131,6 @@ var k=0;
   });
 function reply_click(clicked_id)
 {   ids.push(clicked_id);
-    alert(clicked_id);
 }
 $('#ex1').click(function (e) {
 
@@ -145,7 +144,6 @@ $('#ex1').click(function (e) {
         data: JSON.stringify(ids),
         contentType: "application/json; charset=utf-8",
         success: function(data){
-        	alert(data);
             window.location.href = "http://localhost:8080/pay";
         },
         failure: function(errMsg) {
