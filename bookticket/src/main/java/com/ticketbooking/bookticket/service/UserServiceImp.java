@@ -2,6 +2,7 @@ package com.ticketbooking.bookticket.service;
 
 
 import java.util.Arrays;
+
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import com.ticketbooking.bookticket.model.User;
 import com.ticketbooking.bookticket.repository.RoleRepository;
 import com.ticketbooking.bookticket.repository.UserRepository;
 
-@Service
+@Service("userService")
 public class UserServiceImp implements UserService {
 	
 	@Autowired

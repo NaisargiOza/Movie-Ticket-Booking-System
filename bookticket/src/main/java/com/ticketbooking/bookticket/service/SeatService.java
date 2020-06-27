@@ -24,4 +24,12 @@ public class SeatService {
 	public void setchange(Seat l)
 	{ l.setAvailable(false);
 	}
+	
+	public void insert(String[] ids,int tid)
+	{ for(String l:ids)
+	  { Seat s=seatRepository.findByIdAndTid(l,tid);
+	    s.setAvailable(false);
+	    seatRepository.save(s);
+	  }	
+	}
 }

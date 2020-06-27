@@ -17,16 +17,13 @@ public class Theatre {
 	private int theatre_id;
 	
 	@Column(name = "theatre_name")
-    private String theatre_name;
+    private String theatrename;
 	
 	@Column(name = "city")
     private String city;
 	
 	@Column(name = "movie_name")
     private String movie_name;
-	
-	@Column(name = "seats")
-    private int seats;
 	
 	@Column(name = "available")
     private int available;
@@ -43,11 +40,11 @@ public class Theatre {
 	}
 
 	public String getTheatre_name() {
-		return theatre_name;
+		return theatrename;
 	}
 
-	public void setTheatre_name(String theatre_name) {
-		this.theatre_name = theatre_name;
+	public void setTheatre_name(String theatrename) {
+		this.theatrename = theatrename;
 	}
 
 	public String getCity() {
@@ -66,14 +63,6 @@ public class Theatre {
 		this.movie_name = movie_name;
 	}
 
-	public int getSeats() {
-		return seats;
-	}
-
-	public void setSeats(int seats) {
-		this.seats = seats;
-	}
-
 	public int getAvailable() {
 		return available;
 	}
@@ -82,14 +71,11 @@ public class Theatre {
 		this.available = available;
 	}
 
-	public Theatre(int theatre_id, String theatre_name, String city, String movie_name, int seats, int available,
-			String show_tim) {
-		super();
+	public Theatre(int theatre_id, String theatrename, String city, String movie_name, int available, String show_tim) {
 		this.theatre_id = theatre_id;
-		this.theatre_name = theatre_name;
+		this.theatrename = theatrename;
 		this.city = city;
 		this.movie_name = movie_name;
-		this.seats = seats;
 		this.available = available;
 		this.show_tim = show_tim;
 	}

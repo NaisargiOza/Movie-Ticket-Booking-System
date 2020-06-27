@@ -10,4 +10,5 @@ import com.ticketbooking.bookticket.model.Theatre;
 @Repository
 public interface TheatreRepository extends JpaRepository<Theatre,Integer>{
    public List<Theatre> findByCity(String city);
+   public Theatre findByTheatrename(String theatrename);
 }

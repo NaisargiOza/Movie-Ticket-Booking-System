@@ -7,9 +7,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "bookseat")
+@Table(name = "seat")
 public class Seat {
    
 	@Id
@@ -17,7 +16,7 @@ public class Seat {
 	private String id;
 	
 	@Column(name = "t_id")
-	private int t_id;
+	private int tid;
 	
 	@Column(name = "available")
 	private Boolean available;
@@ -38,22 +37,21 @@ public class Seat {
 		this.available = available;
 	}
 	
-	public int getT_id() {
-		return t_id;
+	public int getTid() {
+		return tid;
 	}
 	
-	public void setT_id(int t_id) {
-		this.t_id = t_id;
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 	
 	public Seat() {
 		
 	}
 
-	public Seat(String id, int t_id, Boolean available) {
-		super();
+	public Seat(String id, int tid, Boolean available) {
 		this.id = id;
-		this.t_id = t_id;
+		this.tid = tid;
 		this.available = available;
 	}
     

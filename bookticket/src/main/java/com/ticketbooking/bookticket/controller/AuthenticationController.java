@@ -30,21 +30,22 @@ import com.ticketbooking.bookticket.service.SeatService;
 import com.ticketbooking.bookticket.service.TheatreService;
 import com.ticketbooking.bookticket.service.UserService;
 
-@Secured(value = { "USER" })
 @RestController
 public class AuthenticationController {
     
 	private Logger logger=LoggerFactory.getLogger(AuthenticationController.class);
+	
 	@Autowired
 	UserService userService;
 	
 	@Autowired 
 	TheatreService theatreService;
 	
-	
-	
 	@Autowired
 	NotificationService notificationService;
+	
+	@Autowired
+	SeatService seatService;
 	
 	String city;
 	String m_name;
@@ -97,20 +98,42 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(value="/seats",method=RequestMethod.POST)
-	public synchronized ModelAndView seats(@RequestParam("num") int n,ModelAndView modelAndView) {
+	public synchronized ModelAndView seats(@RequestParam(value="num",required=false) Integer n,ModelAndView modelAndView) {
+		try {
 		num=n;
+		logger.info("in seats method");	
 		modelAndView.setViewName("seats");
+		}catch(Exception e) { 
+			 logger.info("Error in seat method: "+e.getMessage());		
+		}
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/outp", method = RequestMethod.POST)
 	public ModelAndView outp(@RequestParam("theater") String t,ModelAndView modelAndView) {
 	   theatre_name=t;
+	   logger.info("in outp method");	
 	   modelAndView.addObject("num",num);
 	   modelAndView.setViewName("outp");
 	   return modelAndView;	
 	}
 	
+	@RequestMapping(value = "/pay", method =  RequestMethod.GET)
+	public ModelAndView paymnt() {
+		ModelAndView modelAndView=new ModelAndView();
+		logger.info("in payment method");
+		modelAndView.setViewName("pay");
+        return modelAndView;
+	}
+	
+	@RequestMapping(value = "/confirm", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody int confirm(@RequestBody String[] ids) {
+		logger.info("in confirm method 1");
+		int tid=theatreService.getTID(theatre_name);
+		seatService.insert(ids,tid);
+		logger.info("in confirm method 2");
+	    return ids.length;
+	}
 	
 	@RequestMapping(value = "/gate", method =  RequestMethod.GET)
 	public ModelAndView gateway() {
@@ -118,6 +141,7 @@ public class AuthenticationController {
 		modelAndView.setViewName("gate");
         return modelAndView;
 	}
+	
 	@RequestMapping(value = "/mail", method = RequestMethod.GET)
 	public ModelAndView mail() {
 		ModelAndView modelAndView=new ModelAndView();

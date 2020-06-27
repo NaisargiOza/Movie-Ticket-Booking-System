@@ -43,4 +43,9 @@ public class TheatreService {
 		}
 		return names;
 	}
+	
+	public int getTID(String name) {
+		Theatre t=theatreRepository.findByTheatrename(name);
+		return t.getTheatre_id();
+	}
 }
